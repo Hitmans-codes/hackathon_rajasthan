@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #932ba0, #4d60c1);
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%; /* Set to 100% to occupy the whole screen */
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+             margin: 20px,0;/* Add margin to the top and bottom */
+            margin-left: auto; /* Align form to the right */
+            margin-right: 5%;
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+        .container
+        {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            margin: 0%;
+            padding: 0%;
+            margin-right: 5%;
+            margin-left: 5%;
+            
+        }
+        @media (max-width: 607px) {
+            .container {
+                flex-direction: column;
+            }
+            form{
+                margin-right: 0%;
+                width: max-content;
+            }
+            .container1
+            {
+                width: max-content;
+                margin-left: 10%;
+                flex-direction: row;
+                margin-bottom: 0%;
+            }
+
+            img{
+                height: auto;
+                width: 2%;
+            }
+            .para{
+                font-size: 30%;
+                padding-top: 80px;
+            }
+
+            
+        }
+        .container1{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+
+        }
+        .container2{
+            
+            width: 50%;
+            margin-right: 0%;
+
+        }
+
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        img {
+            
+            height: auto;
+            width: 60%;
+            
+            
+            
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #4d60c1;
+        }
+        .para{
+            color:#c9c8c9;
+            
+
+            font-weight: bold;
+            font-size: 200%;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #4d60c1;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #932ba0;
+            color: #ffffff;
+            padding: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #4d60c1;
+        }
+
+        .note {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #4d60c1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="container1">
+    <img src="D:\hackathon\templates\img\Girl.png" alt="Registration Image">
+    <p class="para">Registration Form</p>
+    </div>
+ <div class="container2">
+       <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone No:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="altPhone">Alternate Phone:</label>
+        <input type="tel" id="altPhone" name="altPhone">
+
+        <label for="location">Current Location:</label>
+        <input type="text" id="location" name="location" placeholder="Click button to get location" readonly>
+        <button type="button" onclick="getLocation()">Get Location</button>
+
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="ipAddress">Camera's IP Address:</label>
+        <input type="text" id="ipAddress" name="ipAddress" required>
+
+        <button type="submit">Register</button>
+
+        <p class="note">Where to find the camera's IP address? [Note: Add your note here]</p>
+        </form>
+  </div>
+</div>
+
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            document.getElementById("location").value = "Latitude: " + position.coords.latitude +
+            " | Longitude: " + position.coords.longitude;
+        }
+    </script>
+</body>
+</html>

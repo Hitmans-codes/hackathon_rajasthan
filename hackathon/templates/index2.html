@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="path/to/your/cv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+    <link rel="stylesheet" href="static\styles\style2.css">
+    <title>CamHub - Home</title>
+</head>
+<body >
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>CamHub</h1>
+            </div>
+            <div class="navbar">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">User Credentials</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+<div class="main-content">
+    <div class="container">
+        <label for="videoInput" id="videoInputLabel">Choose a video:</label>
+        <input type="file" id="videoInput" accept="video/*" />
+        <video id="videoPlayer" controls></video>
+        <canvas id="canvas"></canvas>
+    </div>
+    <form class="container" action="process_image.php" method="post" enctype="multipart/form-data">
+        <label for="image">Select an image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <br>
+        <input type="submit" value="Upload Image">
+    </form>
+    <script src="javascript/script.js"></script>
+</div>
+</section>
+</body>
+</html>
