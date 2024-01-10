@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maps</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Include the Google Maps JavaScript API -->
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-C5M4mvbZ-T3h2S7IVoBRfmC1VwCb0fw&libraries=places&callback=initMap"></script>
+</head>
+<body>
+
+  <h1>Maps</h1>
+
+  <!-- Map Input Form -->
+  <form id="mapForm">
+    <label for="latitude">Latitude:</label>
+    <input type="text" id="latitude" name="latitude" placeholder="Enter Latitude" required>
+    <label for="longitude">Longitude:</label>
+    <input type="text" id="longitude" name="longitude" placeholder="Enter Longitude" required>
+    <button type="button" onclick="showMap()">Show Map</button>
+  </form>
+
+  <!-- Map Display -->
+  <div id="map" style="height: 400px;"></div>
+
+  <script>
+    function initMap() {
+      // Initialize the map centered at a default location
+      const map = new google.maps.Map(document.getElementById('map'), {
+        center: { lat: 40.7128, lng: -74.0060 }, // Default to New York, NY
+        zoom: 12
+      });
+
+      // Function to show the map based on user input
+      window.showMap = function () {
+        const latitude = parseFloat(document.getElementById('latitude').value);
+        const longitude = parseFloat(document.getElementById('longitude').value);
+
+        // Validate latitude and longitude
+        if (isNaN(latitude) || isNaN(longitude)) {
+          alert('Please enter valid latitude and longitude.');
+          return;
+        }
+
+        // Center the map on the user-inputted location
+        map.setCenter({ lat: latitude, lng: longitude });
+
+        // Add a marker at the specified location
+        const marker = new google.maps.Marker({
+          position: { lat: latitude, lng: longitude },
+          map: map,
+          title: 'Selected Location'
+        });
+      };
+    }
+  </script>
+
+</body>
+</html>
